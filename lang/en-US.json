@@ -1,0 +1,232 @@
+﻿{
+	"languageTag": "en-US",
+	"fileDescription": "Strings for ZalancePlayFabPlugin.",
+	"text": {
+		"plugins": {
+			"playfabapi": {
+				"name": "PlayFab API",
+				"description": "A plugin for the PlayFab API with support for authentication and economy.",
+				"help-url": "https://www.construct.net",
+				"properties": {
+					"test-property": {
+						"name": "Test property",
+						"desc": "A test number property. Displayed by 'Alert' action."
+					},
+                    "project-id": {
+						"name": "Project ID",
+						"desc": "The ID of your PlayFab project."
+					}
+				},
+				"aceCategories": {
+					"authentication": "Authentication",
+                    "economy": "Economy"
+				},
+				"conditions": {
+                    "on-registered": {
+						"list-name": "On Registered",
+						"display-text": "On Registered",
+						"description": "Notification sent when a player registers with PlayFab."
+					},
+                    "on-authenticated": {
+						"list-name": "On Authenticated",
+						"display-text": "On Authenticated",
+						"description": "Notification sent when a player logs in."
+					},
+                    "on-message": {
+						"list-name": "On Message",
+						"display-text": "On Message",
+						"description": "Notification sent when a message should be shown to the user."
+					},
+                    "on-inventory-ready": {
+						"list-name": "On Inventory Ready",
+						"display-text": "On inventory ready",
+						"description": "Notification sent when the inventory is retrieved."
+					},
+                    "on-inventory-added": {
+						"list-name": "On Inventory Added",
+						"display-text": "On inventory added",
+						"description": "Notification sent when inventory items are added."
+					},
+                    "on-inventory-subtracted": {
+						"list-name": "On Inventory Subtracted",
+						"display-text": "On inventory subtracted",
+						"description": "Notification sent when inventory items are subtracted."
+					},
+                    "on-inventory-deleted": {
+						"list-name": "On Inventory Deleted",
+						"display-text": "On inventory deleted",
+						"description": "Notification sent when inventory items are deleted."
+					}
+				},
+				"actions": {
+					"do-alert": {
+						"list-name": "Do alert",
+						"display-text": "Do alert",
+						"description": "Do a dummy alert."
+					},
+                    "log-in-with-email": {
+						"list-name": "Log in with email",
+						"display-text": "Log In with email: {0} password: {1}",
+						"description": "Log in using a player email address.",
+                        "params": {
+							"email": {
+								"name": "Email",
+								"desc": "Email address for the account."
+							},
+                            "password": {
+								"name": "Password",
+								"desc": "Password for the PlayFab account (6-100 characters)."
+							}
+						}
+					},
+                    "login-with-playfab": {
+						"list-name": "Log in with PlayFab username",
+						"display-text": "Log In with username: {0} password: {1}",
+						"description": "Log in using a player username.",
+                        "params": {
+							"username": {
+								"name": "Username",
+								"desc": "PlayFab username for the account."
+							},
+                            "password": {
+								"name": "Password",
+								"desc": "Password for the PlayFab account (6-100 characters)."
+							}
+						}
+					},
+                    "register-playfab-user": {
+						"list-name": "Register PlayFab User",
+						"display-text": "Register a PlayFab user with email: {0} password: {1} and username: {2}.",
+						"description": "Request a player login.",
+                        "params": {
+							"email": {
+								"name": "Email",
+								"desc": "User email address attached to their account."
+							},
+                            "password": {
+								"name": "Password",
+								"desc": "Password for the PlayFab account (6-100 characters)"
+							},
+                            "username": {
+								"name": "Username",
+								"desc": "PlayFab username for the account (3-20 characters)."
+							}
+						}
+					},
+                    "get-inventory-items": {
+						"list-name": "Get inventory items",
+						"display-text": "Get inventory items with collectionId: {0}, count: {1}, and next: {2}.",
+						"description": "Get the inventory items for the PlayFab player.",
+                        "params": {
+							"collectionid": {
+								"name": "CollectionId",
+								"desc": "The name of the item collection to use. Defaults to 'default'"
+							},
+                            "count": {
+								"name": "Count",
+								"desc": "The number of items to fetch between 0 - 50. Default is 50."
+							},
+                            "next": {
+								"name": "Next",
+								"desc": "Should the next series of results in the list be returned."
+							}
+						}
+					},
+                    "add-inventory-items": {
+						"list-name": "Add inventory items",
+						"display-text": "Add inventory items with amount: {0}, itemid: {1}, and collectionid: {2}.",
+						"description": "Add the inventory items for the PlayFab player.",
+                        "params": {
+							"amount": {
+								"name": "Amount",
+								"desc": "The amount to add for the current item."
+							},
+                            "itemid": {
+								"name": "Inventory item Id",
+								"desc": "The inventory item id the request applies to."
+							},
+                            "collectionid": {
+								"name": "CollectionId",
+								"desc": "The id of the entity's collection to perform this action on. (Default='default'). The number of inventory collections is unlimited."
+							}
+						}
+					},
+                    "subtract-inventory-items": {
+						"list-name": "Subtract inventory items",
+						"display-text": "Subtract inventory items with amount: {0}, itemid: {1}, and collectionid: {2}.",
+						"description": "Subtract the inventory items for the PlayFab player.",
+                        "params": {
+							"amount": {
+								"name": "Amount",
+								"desc": "The amount to subtract for the current item."
+							},
+                            "itemid": {
+								"name": "Inventory item Id",
+								"desc": "The inventory item id the request applies to."
+							},
+                            "collectionid": {
+								"name": "CollectionId",
+								"desc": "The id of the entity's collection to perform this action on. (Default='default'). The number of inventory collections is unlimited."
+							}
+						}
+					},
+                    "delete-inventory-items": {
+						"list-name": "Delete inventory items",
+						"display-text": "Delete inventory items with itemid: {0}, and collectionid: {1}.",
+						"description": "Delete the inventory items for the PlayFab player.",
+                        "params": {
+                            "itemid": {
+								"name": "Inventory item Id",
+								"desc": "The inventory item id the request applies to."
+							},
+                            "collectionid": {
+								"name": "CollectionId",
+								"desc": "The id of the entity's collection to perform this action on. (Default='default'). The number of inventory collections is unlimited."
+							}
+						}
+					}
+				},
+				"expressions": {
+					"double": {
+						"description": "Double a number.",
+						"translated-name": "Double",
+						"params": {
+							"number": {
+								"name": "Number",
+								"desc": "The number to double."
+							}
+						}
+					},
+                    "get-message": {
+						"description": "Get the current display message.",
+						"translated-name": "Get Message",
+						"params": {}
+					},
+                    "get-account-id": {
+						"description": "Get the PlayFab user's account Id.",
+						"translated-name": "Get Account Id",
+						"params": {}
+					},
+                    "get-ready-inventory-items": {
+						"description": "Get the PlayFab user's inventory items.",
+						"translated-name": "Get Ready Inventory Items",
+						"params": {
+							"index": {
+								"name": "Index",
+								"desc": "The index of the first item to get."
+							},
+                            "count": {
+								"name": "Count",
+								"desc": "The number of items to get (max 50)."
+							},
+                            "isdisplay": {
+								"name": "Is Display String",
+								"desc": "Should this array be formatted for display."
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

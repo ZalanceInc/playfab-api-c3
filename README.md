@@ -1,2 +1,2 @@
-# c3-playfab-api
-PlayFab API addon for Construct 3 
+# mintmark-c3
+The Construct 3 addon for Mintmark payments

@@ -1,0 +1,139 @@
+﻿{
+	"authentication": {
+		"conditions": [
+            {
+				"id": "on-authenticated",
+				"scriptName": "OnAuthenticated"
+			},
+            {
+				"id": "on-message",
+				"scriptName": "OnMessage"
+			}
+		],
+		"actions": [
+            {
+				"id": "log-in-with-email",
+				"scriptName": "LogInWithEmail",
+				"params": [
+                    { "id": "email", "type": "string" },
+                    { "id": "password", "type": "string" }
+                ]
+			},
+            {
+				"id": "login-with-playfab",
+				"scriptName": "LogInWithPlayFab",
+				"params": [
+                    { "id": "username", "type": "string" },
+                    { "id": "password", "type": "string" }
+                ]
+			},
+            {
+				"id": "register-playfab-user",
+				"scriptName": "RegisterPlayFabUser",
+				"params": [
+                    { "id": "email", "type": "string" },
+                    { "id": "password", "type": "string" },
+                    { "id": "username", "type": "string" }
+                ]
+			}
+		],
+		"expressions": [
+            {
+				"id": "get-message",
+				"expressionName": "GetMessage",
+				"scriptName": "GetMessage",
+				"highlight": true,
+				"returnType": "string",
+				"params": []
+			},
+            {
+				"id": "get-account-id",
+				"expressionName": "GetAccountId",
+				"scriptName": "GetAccountId",
+				"highlight": true,
+				"returnType": "string",
+				"params": []
+			}
+		]
+	},
+    "economy": {
+		"conditions": [
+            {
+				"id": "on-inventory-ready",
+				"scriptName": "OnInventoryReady"
+			},
+            {
+				"id": "on-inventory-added",
+				"scriptName": "OnInventoryAdded"
+			},
+            {
+				"id": "on-inventory-subtracted",
+				"scriptName": "OnInventorySubtracted"
+			},
+            {
+				"id": "on-inventory-deleted",
+				"scriptName": "OnInventoryDeleted"
+			}
+		],
+		"actions": [
+            {
+				"id": "get-inventory-items",
+				"scriptName": "GetInventoryItems",
+				"params": [
+                    { "id": "collectionid", "type": "string" },
+                    { "id": "count", "type": "number" },
+                    { "id": "next", "type": "boolean" }
+                ]
+			},
+            {
+				"id": "add-inventory-items",
+				"scriptName": "AddInventoryItems",
+				"params": [
+                    { "id": "amount", "type": "number" },
+                    { "id": "itemid", "type": "string" },
+                    { "id": "collectionid", "type": "string" }
+                ]
+			},
+            {
+				"id": "subtract-inventory-items",
+				"scriptName": "SubtractInventoryItems",
+				"params": [
+                    { "id": "amount", "type": "number" },
+                    { "id": "itemid", "type": "string" },
+                    { "id": "collectionid", "type": "string" }
+                ]
+			},
+            {
+				"id": "delete-inventory-items",
+				"scriptName": "DeleteInventoryItems",
+				"params": [
+                    { "id": "itemid", "type": "string" },
+                    { "id": "collectionid", "type": "string" }
+                ]
+			}
+		],
+		"expressions": [
+            {
+				"id": "get-ready-inventory-items",
+				"expressionName": "GetReadyInventoryItems",
+				"scriptName": "GetReadyInventoryItems",
+				"highlight": true,
+				"returnType": "string",
+				"params": [
+                    {
+						"id": "index",
+						"type": "number"                        
+					},
+                    {
+						"id": "count",
+						"type": "number"
+					},
+                    {
+						"id": "isdisplay",
+						"type": "any"
+					}
+                ]
+			}
+		]
+	}
+}
