@@ -9,17 +9,17 @@ self.C3.Plugins.PlayFabAPI.Acts =
     LogInWithEmail(email, password) {
         this._LogInWithEmail(email, password);
     },
-    RegisterPlayFabUser(email, password, username) {
-        this._RegisterPlayFabUser(email, password, username);
+    RegisterPlayFabUser(email, password, username, requireBothUsernameAndEmail, displayName) {
+        this._RegisterPlayFabUser(email, password, username, requireBothUsernameAndEmail, displayName);
     },
     GetInventoryItems(collectionid, count, next) {
         this._GetInventoryItems(collectionid, count, next);
     },
-    AddInventoryItems(amount, itemid, collectionid) {
-        this._AddInventoryItems(amount, itemid, collectionid);
+    AddInventoryItems(amount, itemid, collectionid, durationinseconds) {
+        this._AddInventoryItems(amount, itemid, collectionid, durationinseconds);
     },
-    SubtractInventoryItems(amount, itemid, collectionid) {
-        this._SubtractInventoryItems(amount, itemid, collectionid);
+    SubtractInventoryItems(amount, itemid, collectionid, durationinseconds) {
+        this._SubtractInventoryItems(amount, itemid, collectionid, durationinseconds;
     },
     DeleteInventoryItems(itemid, collectionid) {
         this._DeleteInventoryItems(itemid, collectionid);

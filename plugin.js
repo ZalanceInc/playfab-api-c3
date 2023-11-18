@@ -31,11 +31,30 @@ const PLUGIN_CLASS = SDK.Plugins.PlayFabAPI = class ZalancePlayFabPlugin extends
 		this._info.SetHelpUrl(self.lang(".help-url"));
 		this._info.SetIsSingleGlobal(true);
 
+        this._info.AddFileDependency({
+            filename: "c3runtime/http.js",
+            type: "external-runtime-script"
+        });
+
+        this._info.AddFileDependency({
+            filename: "c3runtime/inMemoryTokenManager.js",
+            type: "external-runtime-script"
+        });
+
+        this._info.AddFileDependency({
+            filename: "c3runtime/inventory.js",
+            type: "external-runtime-script"
+        });
+
+        this._info.AddFileDependency({
+            filename: "c3runtime/authentication.js",
+            type: "external-runtime-script"
+        });
+
         // Load domSide.js in the document context (main thread).
 		// This is important for supporting the runtime's web worker mode.
 		this._info.SetDOMSideScripts([
             "c3runtime/domSide.js",
-            // "c3runtime/authentication.js",
         ]);
 		
 		SDK.Lang.PushContext(".properties");
