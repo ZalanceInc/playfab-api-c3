@@ -1,9 +1,5 @@
 self.C3.Plugins.PlayFabAPI.Cnds =
 {
-	IsLargeNumber(number)
-	{
-		return number > 100;
-	},
     OnRegistered()
 	{
 		return true;
@@ -21,7 +17,12 @@ self.C3.Plugins.PlayFabAPI.Cnds =
         return false;
     },
     OnInventoryReady() {
-        return this._inventory._itemsReady;
+        if(this._triggerInventoryReady) {
+            this._triggerInventoryReady = false;
+            return true;
+        }
+
+        return false;
     },
     OnInventoryAdded() {
         if(this._triggerInventoryAdded) {

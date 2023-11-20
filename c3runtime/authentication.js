@@ -25,7 +25,7 @@ self.PlayFabAPI.Authentication = class Authentication
         return self.PlayFabAPI.tokenManager.getEntityId();
     }
 
-    _VerifyUsernameForm = (username, password) => {
+    _VerifyUsernameForm(username, password) {
         if (!username || typeof username !== 'string' || username.length === 0) {
             return { success: false, errorMessage: 'An username is required.' };
         }
@@ -37,7 +37,7 @@ self.PlayFabAPI.Authentication = class Authentication
         return { success: true, errorMessage: undefined };
     };
 
-    _VerifyEmailForm = (email, password) => {
+    _VerifyEmailForm(email, password) {
         if (!email || typeof email !== 'string' || email.length === 0) {
             return { success: false, errorMessage: 'An email is required.' };
         }
@@ -49,7 +49,7 @@ self.PlayFabAPI.Authentication = class Authentication
         return { success: true, errorMessage: undefined };
     };
 
-    _VerifyUsernameOrEmailForm = (email, password, username) => {
+    _VerifyUsernameOrEmailForm(email, password, username) {
         if ((typeof email !== 'string' || email.length === 0) && (typeof username !== 'string' || username.length === 0)) {
             return { success: false, errorMessage: 'An email or username is required.' };
         }
@@ -61,7 +61,7 @@ self.PlayFabAPI.Authentication = class Authentication
         return { success: true, errorMessage: undefined };
     };
 
-    _RegisterPlayFabUser = async (email, password, username, requireBothUsernameAndEmail = undefined, displayName = undefined) => {
+    async _RegisterPlayFabUser(email, password, username, requireBothUsernameAndEmail = undefined, displayName = undefined) {
         this._isAuthenticated = false;
 
         const { success, errorMessage } = this._VerifyUsernameOrEmailForm(email, password, username);
@@ -128,7 +128,7 @@ self.PlayFabAPI.Authentication = class Authentication
         }
     };
 
-    _LogInWithPlayFab = async (username, password) => {
+    async _LogInWithPlayFab(username, password) {
         this._isAuthenticated = false;
 
         const { success, errorMessage } = this._VerifyUsernameForm(username, password);
@@ -182,7 +182,7 @@ self.PlayFabAPI.Authentication = class Authentication
         }
     };
 
-    _LogInWithEmail = async (email, password) => {
+    async _LogInWithEmail(email, password) {
         this._isAuthenticated = false;
 
         const { success, errorMessage } = this._VerifyEmailForm(email, password);

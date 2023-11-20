@@ -19,7 +19,7 @@ self.C3.Plugins.PlayFabAPI.Acts =
         this._AddInventoryItems(amount, itemid, collectionid, durationinseconds);
     },
     SubtractInventoryItems(amount, itemid, collectionid, durationinseconds) {
-        this._SubtractInventoryItems(amount, itemid, collectionid, durationinseconds;
+        this._SubtractInventoryItems(amount, itemid, collectionid, durationinseconds);
     },
     DeleteInventoryItems(itemid, collectionid) {
         this._DeleteInventoryItems(itemid, collectionid);

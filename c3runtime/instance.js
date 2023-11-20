@@ -28,6 +28,7 @@ C3.Plugins.PlayFabAPI.Instance = class ZalancePlayFabInstance extends C3.SDKInst
         this._SettingsForUser = null;
         this._TreatmentAssignment = null;
         this._triggerMessage = null;
+        this._triggerInventoryReady = false;
         this._triggerInventoryAdded = false;
         this._triggerInventorySubtracted = false;
         this._triggerInventoryDeleted = false;
@@ -38,101 +39,102 @@ C3.Plugins.PlayFabAPI.Instance = class ZalancePlayFabInstance extends C3.SDKInst
             this._titleId = properties[1];
 		}
 
-        this._auth = new self.PlayFabAPI.Authentication(this._titleId);
-        this._inventory = new self.PlayFabAPI.Inventory(this._titleId);
+        this._auth = new self['PlayFabAPI']['Authentication'](this._titleId);
+        this._inventory = new self['PlayFabAPI']['Inventory'](this._titleId);
 	}
 
     _GetAccountId()
 	{
-		return this._auth._GetAccountId();
+		return this._auth['_GetAccountId']();
 	}
 
-    _RegisterPlayFabUser = async (email, password, username, requireBothUsernameAndEmail = true, displayName = undefined) => {
-        const result = await this._auth._RegisterPlayFabUser(email, password, username, requireBothUsernameAndEmail, displayName);
-        if(result.success) {
+    async _RegisterPlayFabUser (email, password, username, requireBothUsernameAndEmail = true, displayName = undefined) {
+        const result = await this._auth['_RegisterPlayFabUser'](email, password, username, requireBothUsernameAndEmail, displayName);
+        if(result['success']) {
             this._OnRegistered();
         }
         else {
-            this._OnMessage(result.errorMessage);
+            this._OnMessage(result['errorMessage']);
         }
     };
 
-    _LogInWithPlayFab = async (username, password) => {
-        const result = await this._auth._LogInWithPlayFab(username, password);
-        if(result.success) {
+    async _LogInWithPlayFab(username, password) {
+        const result = await this._auth['_LogInWithPlayFab'](username, password);
+        if(result['success']) {
             this._OnAuthenticated();
         }
         else {
-            this._OnMessage(result.errorMessage);
+            this._OnMessage(result['errorMessage']);
         }
     };
 
-    _LogInWithEmail = async (email, password) => {
-        const result = await this._auth._LogInWithEmail(email, password);
-        if(result.success) {
+    async _LogInWithEmail (email, password) {
+        const result = await this._auth['_LogInWithEmail'](email, password);
+        if(result['success']) {
             this._OnAuthenticated();
         }
         else {
-            this._OnMessage(result.errorMessage);
+            this._OnMessage(result['errorMessage']);
         }
     };
 
-    _GetInventoryItems = async (collectionid, count, next) => {
-        const result = await this._inventory._GetInventoryItems(collectionid, count, next);
-        if(result.success) {
-            this.FastTrigger(C3.Plugins.PlayFabAPI.Cnds.OnInventoryReady);
+    async _GetInventoryItems(collectionid, count, next) {
+        const result = await this._inventory['_GetInventoryItems'](collectionid, count, next);
+        if(result['success']) {
+            this._triggerInventoryReady = true;
+            this.Trigger(C3.Plugins.PlayFabAPI.Cnds.OnInventoryReady);
         }
         else {
-            this._OnMessage(result.errorMessage);
+            this._OnMessage(result['errorMessage']);
         }
     };
 
     _GetReadyInventoryItems()
 	{
-		return this._inventory._GetReadyInventoryItems();
+		return this._inventory['_GetReadyInventoryItems']();
 	}
 
-    _AddInventoryItems = async (amount, itemid, collectionid, durationinseconds) => {
-        const result = await this._inventory._AddInventoryItems(amount, itemid, collectionid, durationinseconds);
-        if(result.success) {
+    async _AddInventoryItems(amount, itemid, collectionid, durationinseconds) {
+        const result = await this._inventory['_AddInventoryItems'](amount, itemid, collectionid, durationinseconds);
+        if(result['success']) {
             this._triggerInventoryAdded = true;
             this.Trigger(C3.Plugins.PlayFabAPI.Cnds.OnInventoryAdded);
         }
         else {
-            this._OnMessage(result.errorMessage);
+            this._OnMessage(result['errorMessage']);
         }
     };
 
-    _SubtractInventoryItems = async (amount, itemid, collectionid, durationinseconds) => {
-        const result = await this._inventory._SubtractInventoryItems(amount, itemid, collectionid, durationinseconds);
-        if(result.success) {
+    async _SubtractInventoryItems(amount, itemid, collectionid, durationinseconds) {
+        const result = await this._inventory['_SubtractInventoryItems'](amount, itemid, collectionid, durationinseconds);
+        if(result['success']) {
             this._triggerInventorySubtracted = true;
             this.Trigger(C3.Plugins.PlayFabAPI.Cnds.OnInventorySubtracted);
         }
         else {
-            this._OnMessage(result.errorMessage);
+            this._OnMessage(result['errorMessage']);
         }
     };
 
-    _DeleteInventoryItems = async (itemid, collectionid) => {
-        const result = await this._inventory._DeleteInventoryItems(itemid, collectionid);
-        if(result.success) {
+    async _DeleteInventoryItems(itemid, collectionid) {
+        const result = await this._inventory['_DeleteInventoryItems'](itemid, collectionid);
+        if(result['success']) {
             this._triggerInventoryDeleted = true;
             this.Trigger(C3.Plugins.PlayFabAPI.Cnds.OnInventoryDeleted);
         }
         else {
-            this._OnMessage(result.errorMessage);
+            this._OnMessage(result['errorMessage']);
         }
     };
 
-    _OnRegistered = () => {
+    _OnRegistered() {
         this._isAuthenticated = true;
 
 		// Trigger 'On Registered' in the event system
 		this.Trigger(C3.Plugins.PlayFabAPI.Cnds.OnRegistered);
     }
 
-    _OnAuthenticated = () => {
+    _OnAuthenticated() {
         // Dispatch script event so callers can use addEventListener("click", ...)
 		// this.GetScriptInterface().dispatchEvent(new C3.Event("click", true));
 
@@ -140,7 +142,7 @@ C3.Plugins.PlayFabAPI.Instance = class ZalancePlayFabInstance extends C3.SDKInst
 		this.Trigger(C3.Plugins.PlayFabAPI.Cnds.OnAuthenticated);
     }
 
-    _OnMessage = (msg) => {
+    _OnMessage(msg) {
         this._message = msg;
         this._triggerMessage = true;
 		this.Trigger(C3.Plugins.PlayFabAPI.Cnds.OnMessage);

@@ -26,10 +26,9 @@ self.PlayFabAPI.Inventory = class Inventory
         this._titleId = titleId;
         this._items = [];
         this._invItemsContToken = null;
-        this._itemsReady = false;
 	}
 
-    _GetInventoryItems = async (CollectionId = "default", Count = 50, next = true) => {
+    async _GetInventoryItems(CollectionId = "default", Count = 50, next = true) {
         try {
             let url = self.PlayFabAPI.UrlPathReplace(self.PlayFabAPI.API_INVENTORY_GET_ITEMS, {
                 titleId: this._titleId,
@@ -68,8 +67,6 @@ self.PlayFabAPI.Inventory = class Inventory
                     ContinuationToken: this._invItemsContToken,
                 } = responseJson.data);
 
-                this._itemsReady = true;
-
                 return { 
                     success: true, 
                     status: 200, 
@@ -85,7 +82,7 @@ self.PlayFabAPI.Inventory = class Inventory
         }
     };
 
-    _AddInventoryItems = async (Amount, itemid, CollectionId = "default", DurationInSeconds = undefined) => {
+    async _AddInventoryItems(Amount, itemid, CollectionId = "default", DurationInSeconds = undefined) {
         try {
             let url = self.PlayFabAPI.UrlPathReplace(self.PlayFabAPI.API_INVENTORY_ADD_ITEMS, {
                 titleId: this._titleId,
@@ -144,7 +141,7 @@ self.PlayFabAPI.Inventory = class Inventory
         }
     };
 
-    _SubtractInventoryItems = async (Amount, itemid, CollectionId = "default", DurationInSeconds = undefined) => {
+    async _SubtractInventoryItems(Amount, itemid, CollectionId = "default", DurationInSeconds = undefined) {
         try {
             let url = self.PlayFabAPI.UrlPathReplace(self.PlayFabAPI.API_INVENTORY_SUBTRACT_ITEMS, {
                 titleId: this._titleId,
@@ -204,7 +201,7 @@ self.PlayFabAPI.Inventory = class Inventory
         }
     };
 
-    _DeleteInventoryItems = async (itemid, CollectionId = "default") => {
+    async _DeleteInventoryItems(itemid, CollectionId = "default") {
         try {
             let url = self.PlayFabAPI.UrlPathReplace(self.PlayFabAPI.API_INVENTORY_DELETE_ITEMS, {
                 titleId: this._titleId,
@@ -258,7 +255,7 @@ self.PlayFabAPI.Inventory = class Inventory
         }
     };
 
-    _GetReadyInventoryItems = (start = 0, count = 50) => {
+    _GetReadyInventoryItems(start = 0, count = 50) {
         if(count > 50 || count < 1) {
             count = 50;
         }
@@ -269,7 +266,6 @@ self.PlayFabAPI.Inventory = class Inventory
             return [];
         }
 
-        this._itemsReady = false;
         const result = this._items.subarray(start, end);
         return result;
     }
