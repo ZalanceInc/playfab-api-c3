@@ -1,5 +1,6 @@
 # PlayFab for Construct 3
 ## _A free addon for Construct 3 to interact with the PlayFab API_
+## Author: Zalance Inc.
 
 [![Zalance](https://zalance.net/wp-content/uploads/2023/08/logo-diamond-blue-441x84-1.png)](https://zalance.net/playfab-downloads)
 
@@ -14,7 +15,7 @@ game monetization.
 
 - Support for authentication and economy (v2)
 - Asynchronous calls for data retrieval
-- Messaging support for user facing feedback
+- Messaging support for user-facing feedback
 - Minification compatible
 
 

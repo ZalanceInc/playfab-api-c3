@@ -12,7 +12,7 @@ const SDK = self.SDK;
 const PLUGIN_ID = "PlayFabAPI";
 ////////////////////////////////////////////
 
-const PLUGIN_VERSION = "1.0.0.0";
+const PLUGIN_VERSION = "0.1.0.0";
 const PLUGIN_CATEGORY = "general";
 
 const PLUGIN_CLASS = SDK.Plugins.PlayFabAPI = class ZalancePlayFabPlugin extends SDK.IPluginBase
