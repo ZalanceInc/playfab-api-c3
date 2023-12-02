@@ -1,6 +1,5 @@
 # PlayFab for Construct 3
 ## _A free addon for Construct 3 to interact with the PlayFab API_
-## Author: Zalance Inc.
 
 [![Zalance](https://zalance.net/wp-content/uploads/2023/08/logo-diamond-blue-441x84-1.png)](https://zalance.net/playfab-downloads)
 
@@ -46,6 +45,11 @@ The PlayFab addon is available for download along with project examples.
 - Add Inventory Items
 - Subtract Inventory Items
 - Delete Inventory Items
+
+
+## Author: 
+
+Zalance Inc.
 
 ## License
 
